@@ -226,7 +226,7 @@ NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 
 # MongoDB
-MONGODB_URI=mongodb://localhost:27017/ai-resume-builder
+MONGODB_URI=mongodb://localhost:27017/career-pilot
 
 # Firebase Admin
 FIREBASE_PROJECT_ID=your-project-id
@@ -329,7 +329,7 @@ npm run dev
 ## 📁 Project Structure
 
 ```
-GdocNitp/
+career-pilot/
 ├── backend/
 │   ├── package.json
 │   └── src/
