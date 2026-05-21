@@ -23,8 +23,6 @@ const isDark = theme === "dark";
 const dotColor = isDark ? "#ffffff" : "#000000";
 
 const svgMap = useMemo(() => {
-
-  const svgMap = useMemo(() => {
     if (!isMounted) return null;
     if (cachedSvgMap) return cachedSvgMap;
 
@@ -41,7 +39,7 @@ const svgMap = useMemo(() => {
       console.error("WorldMap error:", error);
       return null;
     }
-}, [isMounted, dotColor]);
+  }, [isMounted, dotColor]);
 
   const projectPoint = (lat, lng) => {
     const x = (lng + 180) * (800 / 360);

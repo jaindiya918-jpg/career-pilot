@@ -5,6 +5,7 @@ const THEMES = [
   { id: 'professional', name: 'Professional', supportsDarkMode: true, lightPreview: '#f8fafc', darkPreview: '#0f172a', accent: '#0ea5e9', isPremium: true },
   { id: 'creative', name: 'Creative', supportsDarkMode: false, lightPreview: '#fdf4ff', darkPreview: null, accent: '#d946ef', isPremium: true },
   { id: 'bold', name: 'Bold', supportsDarkMode: true, lightPreview: '#fff7ed', darkPreview: '#1c1917', accent: '#f97316', isPremium: false },
+  { id: 'github-profile', name: 'GitHub Profile', supportsDarkMode: true, lightPreview: '#0D1117', darkPreview: '#0D1117', accent: '#39d353', isPremium: false },
 ]
 
 export default function ThemeSelector({ selectedTheme, onSelectTheme }) {

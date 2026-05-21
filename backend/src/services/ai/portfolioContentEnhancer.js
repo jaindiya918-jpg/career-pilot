@@ -3,9 +3,9 @@ import { aiCallsCounter } from '../../middleware/metrics.js';
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 if (!geminiApiKey) {
-  throw new Error('GEMINI_API_KEY environment variable is required');
+  console.warn('⚠️  GEMINI_API_KEY is not set — AI portfolio enhancement will be unavailable. Non-AI routes are unaffected.');
 }
-const genAI = new GoogleGenerativeAI(geminiApiKey);
+const genAI = geminiApiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
 
 const SECTION_PROMPTS = {
   hero: (content) => `
@@ -97,6 +97,11 @@ Respond ONLY with valid JSON in this exact format:
 };
 
 export const enhanceSection = async (sectionType, content) => {
+  if (!genAI) {
+    const err = new Error('AI enhancement is currently unavailable — GEMINI_API_KEY is not configured on the server.');
+    err.statusCode = 503;
+    throw err;
+  }
   const promptBuilder = SECTION_PROMPTS[sectionType];
 
   if (!promptBuilder) {

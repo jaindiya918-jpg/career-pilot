@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Tags -->
+  <title>{{NAME}} — Developer Portfolio</title>
+  <meta name="description" content="{{NAME}}'s developer portfolio. Built with CareerPilot, featuring pinned repositories, contribution calendar, and interactive README." />
+  <meta name="keywords" content="developer, portfolio, github, profile, coder, software engineer, resume, portfolio-template" />
+  <meta property="og:title" content="{{NAME}} — Portfolio" />
+  <meta property="og:description" content="{{NAME}} — {{ROLE}}" />
+  <meta property="og:type" content="website" />
+
+  <!-- Preconnect and Google Fonts (Optional but using native system fonts as primary fallback per specs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       TOP NAVIGATION HEADER
+       ========================================== -->
+  <header class="gh-header" role="banner">
+    <div class="gh-header-container">
+      <div class="gh-header-left">
+        <!-- Custom Brand Icon (No official GitHub Octocat/Logo) -->
+        <a href="#overview" class="gh-brand" aria-label="Developer Profile Home">
+          <svg class="gh-brand-icon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+          </svg>
+          <span class="gh-brand-text">DevHub</span>
+        </a>
+
+        <!-- Search Bar Placeholder -->
+        <div class="gh-search-container" aria-hidden="true">
+          <button class="gh-search-btn">
+            <span class="gh-search-placeholder">Type <span class="gh-search-slash">/</span> to search</span>
+          </button>
+        </div>
+
+        <!-- Fake Nav Links for Authenticity -->
+        <nav class="gh-nav-links" aria-label="Global links">
+          <a href="#overview">Pull requests</a>
+          <a href="#overview">Issues</a>
+          <a href="#overview">Codespaces</a>
+          <a href="#overview">Marketplace</a>
+          <a href="#overview">Explore</a>
+        </nav>
+      </div>
+
+      <div class="gh-header-right">
+        <!-- Notification Bell -->
+        <button class="gh-header-action" aria-label="Notifications" title="Notifications">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M8 16a2 2 0 001.985-1.75H6.015A2 2 0 008 16zm4.387-5.132c.31-.515.613-1.441.613-3.118 0-1.782-.962-3.197-2.61-3.619a2.44 2.44 0 00-.012-.04 2.385 2.385 0 00-4.756 0c0 .013-.004.027-.012.04-1.648.422-2.61 1.837-2.61 3.619 0 1.677.303 2.603.613 3.118.423.706.772 1.306.903 2.132H3.75a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-.764c.13-.826.48-1.426.903-2.132z" />
+          </svg>
+        </button>
+
+        <!-- Create New Dropdown -->
+        <button class="gh-header-action" aria-label="Create new repository or gist" title="Create new">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 110-1.5H7V2.75A.75.75 0 017.75 2z" />
+          </svg>
+          <span class="gh-header-caret"></span>
+        </button>
+
+        <!-- Profile Avatar Dropdown -->
+        <div class="gh-avatar-dropdown">
+          <img src="" alt="{{NAME}}'s avatar" class="gh-header-avatar profile-avatar" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       STICKY SUB-NAVIGATION BAR (TABS)
+       ========================================== -->
+  <nav class="gh-tab-bar" aria-label="Profile navigation" role="navigation">
+    <div class="gh-tab-bar-container">
+      <ul class="gh-tabs" role="tablist">
+        <li role="presentation">
+          <a href="#overview" class="gh-tab active" id="tab-overview" role="tab" aria-selected="true" aria-controls="overview-panel">
+            <svg class="gh-tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zm1.75-.25a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25H1.75zM12 4.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm-7.25-.75h4a.75.75 0 010 1.5h-4a.75.75 0 010-1.5zm0-3.25h4a.75.75 0 010 1.5h-4a.75.75 0 010-1.5zm0 6.5h4a.75.75 0 010 1.5h-4a.75.75 0 010-1.5z" />
+            </svg>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#repositories" class="gh-tab" id="tab-repositories" role="tab" aria-selected="false" aria-controls="repositories-panel">
+            <svg class="gh-tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+            </svg>
+            <span>Repositories</span>
+            <span class="gh-counter" id="repo-count-badge">0</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#projects-tab" class="gh-tab" id="tab-projects" role="tab" aria-selected="false">
+            <svg class="gh-tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75C0 .784.784 0 1.75 0zm12.5 1.5H1.75a.25.25 0 00-.25.25V14.25c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25zM12 4.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#packages-tab" class="gh-tab" id="tab-packages" role="tab" aria-selected="false">
+            <svg class="gh-tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M8.878.224a1.25 1.25 0 00-1.756 0L1.47 5.877a1.25 1.25 0 000 1.766l5.652 5.653a1.25 1.25 0 001.756 0l5.653-5.653a1.25 1.25 0 000-1.766L8.878.224zm-1.01 1.06a.25.25 0 01.354 0l5.3 5.3a.25.25 0 010 .353l-5.3 5.3a.25.25 0 01-.354 0l-5.3-5.3a.25.25 0 010-.353l5.3-5.3z" />
+            </svg>
+            <span>Packages</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#stars-tab" class="gh-tab" id="tab-stars" role="tab" aria-selected="false">
+            <svg class="gh-tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97 3.046 2.97a.75.75 0 01-.416 1.279l-4.21.612-1.882 3.815a.75.75 0 01-1.346 0l-1.882-3.815-4.21-.612a.75.75 0 01-.416-1.279l3.046-2.97-3.046-2.97a.75.75 0 01.416-1.279l4.21-.612L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694z" />
+            </svg>
+            <span>Stars</span>
+            <span class="gh-counter" id="stars-count-badge">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       MAIN DUAL COLUMN CONTENT
+       ========================================== -->
+  <main class="gh-container" role="main">
+    <div class="gh-layout">
+
+      <!-- LEFT SIDEBAR: PROFILE & INFO -->
+      <aside class="gh-sidebar">
+        <!-- Profile Picture Grid -->
+        <div class="gh-sidebar-avatar-container">
+          <img src="" alt="{{NAME}}" class="gh-profile-avatar profile-avatar" />
+          <div class="gh-avatar-status-badge" title="Status: Coding" aria-label="Status: Coding">
+            <span class="gh-status-emoji">👨‍💻</span>
+          </div>
+        </div>
+
+        <!-- Name & Username -->
+        <div class="gh-name-container">
+          <h1 class="gh-name">{{NAME}}</h1>
+          <p class="gh-username" id="gh-username">loading...</p>
+          <p class="gh-tagline" style="font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.4;">{{TAGLINE}}</p>
+        </div>
+
+        <!-- Role / Job Title Badge -->
+        <div class="gh-role-badge">
+          <span class="mono">{{ROLE}}</span>
+        </div>
+
+        <!-- Green Action Buttons -->
+        <div class="gh-actions">
+          <button class="btn btn-primary btn-block" id="btn-follow">Follow</button>
+          <button class="btn btn-secondary" id="btn-sponsor" aria-label="Sponsor this developer">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="color: #db61a2; margin-right: 4px;">
+              <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5zM8 14.25l-.348-.66c-.006-.003-.017-.009-.03-.016a22.062 22.062 0 01-3.298-2.316C2.46 9.688.5 7.42.5 5.5c0-2.737 2.17-4.5 4.25-4.5 1.832 0 3.32 1.36 3.25 3 .07-1.64 1.558-3 3.39-3 2.08 0 4.25 1.763 4.25 4.5 0 1.92-1.96 4.188-3.822 5.758a22.065 22.065 0 01-3.328 2.332l-.03.017-.348.658z" />
+            </svg>
+            <span>Sponsor</span>
+          </button>
+          <button class="btn btn-secondary px-2" aria-label="More profile options">...</button>
+        </div>
+
+        <!-- Bio Description -->
+        <p class="gh-bio">{{ABOUT_PARA_1}}</p>
+
+        <!-- Social Statistics Row -->
+        <div class="gh-social-stats">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M2 5.5a3.5 3.5 0 115.898 2.549 5.508 5.508 0 013.034 4.084.75.75 0 11-1.482.235 4 4 0 00-7.9 0 .75.75 0 01-1.482-.236 5.507 5.507 0 013.102-4.11A3.5 3.5 0 012 5.5zM5.5 9A2 2 0 105.5 5 2 2 0 005.5 9zM12.5 9a3 3 0 110-6 3 3 0 010 6zm0-4.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM8 12.5a3.498 3.498 0 014.5-3.31 5.507 5.507 0 013.418 4.25.75.75 0 01-1.492.12 4 4 0 00-2.54-3.12.75.75 0 01-.514-.71.75.75 0 01.855-.74 1.5 1.5 0 001.353-.29 4.015 4.015 0 00-4.996.3.75.75 0 01-1.049-.12A3.488 3.488 0 018 12.5z" />
+          </svg>
+          <span class="gh-stat-link">
+            <strong class="gh-stat-number" id="followers-count">48</strong> followers
+          </span>
+          <span class="gh-stat-dot">·</span>
+          <span class="gh-stat-link">
+            <strong class="gh-stat-number" id="following-count">36</strong> following
+          </span>
+        </div>
+
+        <!-- Contact & Info Details -->
+        <ul class="gh-sidebar-details">
+          <!-- Location -->
+          <li class="gh-detail-item" id="detail-location-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 010-7.072v.001a5 5 0 017.072 0zM8 9a2 2 0 100-4 2 2 0 000 4z" />
+            </svg>
+            <span id="detail-location">{{LOCATION}}</span>
+          </li>
+
+          <!-- Email -->
+          <li class="gh-detail-item" id="detail-email-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 12.25c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-6.38l-4.425 2.766a1.25 1.25 0 01-1.325 0L1.5 5.87v6.38zm13-7.534V3.75a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.966l5.775 3.61a.25.25 0 00.265 0L14.5 4.716z" />
+            </svg>
+            <a href="mailto:{{EMAIL}}" class="gh-link-accent" id="detail-email">{{EMAIL}}</a>
+          </li>
+
+          <!-- Website -->
+          <li class="gh-detail-item" id="detail-website-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a3.5 3.5 0 114.95 4.95l-2.5 2.5a3.5 3.5 0 01-4.95 0 .75.75 0 00-1.06 1.06 5 5 0 007.07 0l2.5-2.5a5 5 0 00-7.07-7.07l-1.25 1.25zm-4.2 4.2a.75.75 0 00-1.06-.06 5 5 0 000 7.07l2.5 2.5a5 5 0 007.07-7.07l-1.25-1.25a.75.75 0 10-1.06 1.06l1.25 1.25a3.5 3.5 0 11-4.95-4.95l-2.5-2.5a3.5 3.5 0 00-4.95 0z" />
+            </svg>
+            <a href="{{WEBSITE_URL}}" target="_blank" rel="noopener noreferrer" class="gh-link-accent" id="detail-website">{{WEBSITE_URL}}</a>
+          </li>
+
+          <!-- GitHub -->
+          <li class="gh-detail-item" id="detail-github-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            <a href="{{GITHUB_URL}}" target="_blank" rel="noopener noreferrer" class="gh-link-accent" id="detail-github">GitHub Profile</a>
+          </li>
+
+          <!-- LinkedIn -->
+          <li class="gh-detail-item" id="detail-linkedin-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm10.934 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 01.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+            </svg>
+            <a href="{{LINKEDIN_URL}}" target="_blank" rel="noopener noreferrer" class="gh-link-accent" id="detail-linkedin">LinkedIn Profile</a>
+          </li>
+
+          <!-- Twitter / X -->
+          <li class="gh-detail-item" id="detail-twitter-container">
+            <svg class="gh-detail-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z" />
+            </svg>
+            <a href="{{TWITTER_URL}}" target="_blank" rel="noopener noreferrer" class="gh-link-accent" id="detail-twitter">Twitter / X</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- RIGHT CONTENT PANEL -->
+      <section class="gh-main-content">
+        <div class="tab-panels">
+
+          <!-- TAB PANEL: OVERVIEW (DEFAULT ACTIVE) -->
+          <div class="tab-panel active" id="overview-panel" role="tabpanel" aria-labelledby="tab-overview">
+            
+            <!-- SECTION 1: PINNED PROJECTS -->
+            <div class="gh-section">
+              <div class="gh-section-header">
+                <h2 class="gh-section-title">Pinned</h2>
+                <span class="gh-section-link">Customize your pins</span>
+              </div>
+
+              <!-- Pinned Repos Grid -->
+              <div class="pinned-repos-grid" id="pinned-repos-grid">
+                <!-- Injected by script.js -->
+              </div>
+            </div>
+
+            <!-- SECTION 2: CONTRIBUTION CALENDAR HEATMAP -->
+            <div class="gh-section">
+              <div class="gh-section-header">
+                <h2 class="gh-section-title">
+                  <span id="total-contributions-count">0</span> contributions in the last year
+                </h2>
+              </div>
+
+              <!-- Contribution Card Container -->
+              <div class="heatmap-card">
+                <div class="heatmap-wrapper">
+                  <!-- Weekday Labels Column -->
+                  <div class="heatmap-days-labels">
+                    <span>Mon</span>
+                    <span>Wed</span>
+                    <span>Fri</span>
+                  </div>
+
+                  <div class="heatmap-grid-container">
+                    <!-- Month Labels Row -->
+                    <div class="heatmap-months-row" id="heatmap-months-row">
+                      <!-- Filled by JS -->
+                    </div>
+                    
+                    <!-- Main Grid Box Calendar -->
+                    <div class="heatmap-grid" id="heatmap-grid">
+                      <!-- Generated by script.js -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer controls & Legend -->
+                <div class="heatmap-footer">
+                  <span class="heatmap-footer-note">Activity was compiled based on local development statistics.</span>
+                  <div class="heatmap-legend" aria-hidden="true">
+                    <span>Less</span>
+                    <span class="heatmap-legend-box" style="background-color: var(--contrib-bg);"></span>
+                    <span class="heatmap-legend-box" style="background-color: var(--contrib-l1);"></span>
+                    <span class="heatmap-legend-box" style="background-color: var(--contrib-l2);"></span>
+                    <span class="heatmap-legend-box" style="background-color: var(--contrib-l3);"></span>
+                    <span class="heatmap-legend-box" style="background-color: var(--contrib-l4);"></span>
+                    <span>More</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: README ABOUT ME -->
+            <div class="gh-section" id="readme-section">
+              <div class="readme-card">
+                <!-- Readme Card Title / Header -->
+                <div class="readme-header">
+                  <div class="readme-title">
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" class="readme-header-icon">
+                      <path fill-rule="evenodd" d="M4 1.75C4 .784 4.784 0 5.75 0h8.5c.966 0 1.75.784 1.75 1.75v12.5A1.75 1.75 0 0114.25 16h-8.5A1.75 1.75 0 014 14.25V1.75zM5.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25h-8.5z" />
+                      <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.5a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.5a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.5a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM.75 5H3v1.5H.75a.75.75 0 010-1.5zM3 9H.75A.75.75 0 01.75 7.5H3V9zm-2.25 2.5A.75.75 0 011.5 10H3v1.5H1.5a.75.75 0 01-.75-.75z" />
+                    </svg>
+                    <span class="readme-filename" id="readme-filename">username / README.md</span>
+                  </div>
+                  <!-- Edit Icon placeholder -->
+                  <div class="readme-actions">
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="cursor: pointer; opacity: 0.7;">
+                      <path d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81 3.507 11.053a.25.25 0 00-.063.108l-.51 1.783 1.782-.51a.25.25 0 00.108-.063L11.19 6.25z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Readme Box Content (HTML dynamically injected) -->
+                <div class="readme-body markdown-body" id="readme-body">
+                  <!-- Rendered dynamically by script.js -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB PANEL: REPOSITORIES -->
+          <div class="tab-panel" id="repositories-panel" role="tabpanel" aria-labelledby="tab-repositories">
+            <div class="gh-section">
+              <div class="repos-filter-bar">
+                <input type="text" placeholder="Find a repository..." class="repo-search-input" id="repo-search-input" />
+                <div class="repos-filter-dropdowns">
+                  <select class="repo-filter-select" id="filter-language">
+                    <option value="all">All Languages</option>
+                  </select>
+                  <select class="repo-filter-select" id="filter-sort">
+                    <option value="stars">Stars</option>
+                    <option value="name">Name</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Full Repos List Container -->
+              <div class="repos-list" id="repos-list">
+                <!-- Injected by script.js -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="gh-footer" role="contentinfo">
+    <div class="gh-footer-container">
+      <div class="gh-footer-left">
+        <span>© <span id="year">2026</span> DevHub, Inc.</span>
+      </div>
+      <div class="gh-footer-links">
+        <a href="#overview">Terms</a>
+        <a href="#overview">Privacy</a>
+        <a href="#overview">Security</a>
+        <a href="#overview">Status</a>
+        <a href="#overview">Docs</a>
+        <a href="#overview">Contact DevHub</a>
+        <a href="#overview">Pricing</a>
+        <a href="#overview">API</a>
+        <a href="#overview">Training</a>
+        <a href="#overview">Blog</a>
+        <a href="#overview">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tooltip Element for Heatmap -->
+  <div class="heatmap-tooltip" id="heatmap-tooltip" role="tooltip" aria-hidden="true">
+    0 contributions on May 21, 2026
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,13 +1,20 @@
 import Groq from 'groq-sdk';
 import dotenv from 'dotenv';
 
-dotenv.config();
-
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const groqApiKey = process.env.GROQ_API_KEY;
+if (!groqApiKey) {
+  console.warn('⚠️  GROQ_API_KEY is not set — Groq interview analysis features will be unavailable. Non-Groq routes are unaffected.');
+}
+const groq = groqApiKey ? new Groq({ apiKey: groqApiKey }) : null;
 
 const generateQuestionId = () => `q_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
 const callGroq = async (prompt) => {
+  if (!groq) {
+    const err = new Error('Groq AI features are currently unavailable — GROQ_API_KEY is not configured on the server.');
+    err.statusCode = 503;
+    throw err;
+  }
   const completion = await groq.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
     model: 'llama-3.3-70b-versatile',

@@ -2,20 +2,29 @@ import mongoose from 'mongoose';
 
 export const connectDB = async () => {
   const mongoUri = process.env.MONGODB_URI;
+  const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
 
-  if (!mongoUri && process.env.NODE_ENV !== 'development') {
+  if (!mongoUri && !isDev) {
     throw new Error('MONGODB_URI is not set. Set it in your .env file before starting the server.');
   }
 
   const uri = mongoUri || 'mongodb://localhost:27017/careerpilot';
 
   console.log('📦 Connecting to MongoDB...');
-  await mongoose.connect(uri, {
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 45000,
-    maxPoolSize: 10,
-  });
-  console.log('📦 Connected to MongoDB');
+  try {
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: isDev ? 3000 : 30000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+    });
+    console.log('📦 Connected to MongoDB');
+  } catch (err) {
+    if (isDev) {
+      console.warn('⚠️  Could not connect to MongoDB. Running in offline/limited mode for development:', err.message);
+    } else {
+      throw err;
+    }
+  }
 
   // Slow-query profiling is opt-in only. Set ENABLE_DB_PROFILING=true to activate.
   const enableDbProfiling = process.env.ENABLE_DB_PROFILING === 'true';
